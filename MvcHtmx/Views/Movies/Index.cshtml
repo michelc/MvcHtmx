@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                <a asp-action="Create">Créer</a>
+                <a asp-action="Create" hx-target="main" hx-get="/movies/create/">Créer</a>
             </th>
         </tr>
     </thead>
@@ -41,9 +41,12 @@
         @Html.DisplayFor(modelItem => item.Price)
     </td>
     <td>
-        <a asp-action="Edit" asp-route-id="@item.Movie_ID">Modifier</a> |
-        <a asp-action="Details" asp-route-id="@item.Movie_ID">Consulter</a> |
-        <a asp-action="Delete" asp-route-id="@item.Movie_ID">Supprimer</a>
+        <a asp-action="Edit" asp-route-id="@item.Movie_ID"
+           hx-target="main" hx-get="/movies/edit/@item.Movie_ID/">Modifier</a> |
+        <a asp-action="Details" asp-route-id="@item.Movie_ID"
+           hx-target="main" hx-get="/movies/details/@item.Movie_ID/">Consulter</a> |
+        <a asp-action="Delete" asp-route-id="@item.Movie_ID"
+           hx-target="main" hx-get="/movies/delete/@item.Movie_ID/">Supprimer</a>
     </td>
 </tr>}
     </tbody>

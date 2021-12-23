@@ -29,7 +29,7 @@ namespace MvcHtmx.Controllers
                                    Price = x.Price
                                }).ToListAsync();
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // GET: Movies/Details/5
@@ -41,7 +41,7 @@ namespace MvcHtmx.Controllers
                 return NotFound();
             }
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // GET: Movies/Create
@@ -49,7 +49,7 @@ namespace MvcHtmx.Controllers
         {
             var model = new MovieEditorViewModel();
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // POST: Movies/Create
@@ -65,7 +65,7 @@ namespace MvcHtmx.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // GET: Movies/Edit/5
@@ -77,7 +77,7 @@ namespace MvcHtmx.Controllers
                 return NotFound();
             }
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // POST: Movies/Edit/5
@@ -106,7 +106,7 @@ namespace MvcHtmx.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // GET: Movies/Delete/5
@@ -118,7 +118,7 @@ namespace MvcHtmx.Controllers
                 return NotFound();
             }
 
-            return View(model);
+            return HtmxView(model);
         }
 
         // POST: Movies/Delete/5
@@ -136,7 +136,7 @@ namespace MvcHtmx.Controllers
             }
             catch { }
 
-            return View(await GetMovieDisplayViewModel(id));
+            return HtmxView(await GetMovieDisplayViewModel(id));
         }
 
         private async Task<MovieDisplayViewModel> GetMovieDisplayViewModel(int? id)
@@ -178,6 +178,17 @@ namespace MvcHtmx.Controllers
         private bool MovieExists(int id)
         {
             return _context.Movies.Any(e => e.Movie_ID == id);
+        }
+
+        private IActionResult HtmxView(object model)
+        {
+            if (Request.Headers.ContainsKey("HX-Request"))
+            {
+                Response.Headers.Add("HX-Push", Request.Path.ToString());
+                return PartialView(model);
+            }
+
+            return View(model);
         }
     }
 }

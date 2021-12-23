@@ -2,7 +2,7 @@
 
 @{ ViewBag.Title = "Film / Créer"; }
 
-<form method="post" class="form-horizontal">
+<form method="post" class="form-horizontal" hx-post="/movies/create/">
 
     <fieldset>
 
@@ -14,7 +14,7 @@
         <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">
                 <input type="submit" value="Créer" class="btn btn-primary" />
-                <a asp-action="Index">Annuler</a>
+                <a asp-action="Index" hx-target="main" hx-get="/movies/">Annuler</a>
             </div>
         </div>
 
