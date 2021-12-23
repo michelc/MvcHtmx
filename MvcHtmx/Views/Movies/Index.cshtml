@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MvcHtmx.Models.MovieViewModel>
+
+@{ ViewBag.Title = "Films"; }
+
+<h1>@ViewBag.Title</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                <a asp-action="Create">Créer</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Year)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Genre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Movie_ID">Modifier</a> |
+        <a asp-action="Details" asp-route-id="@item.Movie_ID">Consulter</a> |
+        <a asp-action="Delete" asp-route-id="@item.Movie_ID">Supprimer</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

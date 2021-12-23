@@ -1,0 +1,10 @@
+# Fichiers et dossiers Visual Studio
+
+.vs/
+bin/
+obj/
+*.user
+
+# Base de données
+
+*.db
