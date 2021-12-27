@@ -13,4 +13,4 @@ Le but de cette application est de voir comment utiliser [HTMX](https://htmx.org
 ## Branches
 
 * [1-sans-htmx](https://github.com/michelc/MvcHtmx/tree/1-sans-htmx) : l'application CRUD en ASP.NET Core MVC de départ
-* [2-ajout-htmx-basique](https://github.com/michelc/MvcHtmx/tree/2-ajout-htmx-basique) : ajout de HTMX le plus simplement possible
+* [2-ajout-htmx-basique](https://github.com/michelc/MvcHtmx/tree/2-ajout-htmx-basique) : ajout de HTMX le plus simplement possible => voir les [modifications apportées](https://github.com/michelc/MvcHtmx/commit/a1a321ea16abf36ae39f5440db7936caa003985f)
